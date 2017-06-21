@@ -503,7 +503,7 @@ export.socrata <- function(url, app_token = NULL) {
 
       # Construct the filename output
       content_disposition <- response$headers$`content-disposition`
-      default_format_raw <- strsplit(content_disposition, "filename=")[[1]][2]
+      default_format_raw <- strsplit(as.character(content_disposition, "filename=")[[1]][2]
       default_format_cleaned <- gsub('"', "", default_format_raw)
       default_format <- tools::file_ext(default_format_cleaned)
       downloadTimeChr <- gsub('\\s+','_',downloadTime) # Remove spaces and replaces with underscore
